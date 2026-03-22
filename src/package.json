@@ -1,0 +1,12 @@
+{
+  "name": "messageboard",
+  "version": "1.0.0",
+  "description": "MessageBoard micro-service + static client",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

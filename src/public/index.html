@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MessageBoard — Live Discussion Feed</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="theme-light">
+
+  <!-- Title banner -->
+  <header>
+    <div class="header-inner">
+      <h1>💬 MessageBoard</h1>
+      <p class="tagline">Live discussion feed</p>
+      <button id="btn-theme" aria-label="Toggle theme">🌙 Dark mode</button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Section 3.4: Configurable server URL -->
+    <section aria-labelledby="server-titre">
+      <h2 id="server-titre">Server</h2>
+      <div class="form-group">
+        <label for="input-server">API server URL</label>
+        <input type="text" id="input-server" placeholder="https://your-server.onrender.com" />
+      </div>
+    </section>
+
+    <!-- Message list -->
+    <section aria-labelledby="messages-titre">
+      <h2 id="messages-titre">Messages</h2>
+      <ul id="liste-messages">
+        <li class="message-item">
+          <span class="pseudo">Alice</span>
+          <span class="date">01/01/2025 10:00</span>
+          <p>Welcome to MessageBoard! 🎉</p>
+        </li>
+        <li class="message-item">
+          <span class="pseudo">Bob</span>
+          <span class="date">01/01/2025 10:05</span>
+          <p>Hey everyone, great app!</p>
+        </li>
+        <li class="message-item">
+          <span class="pseudo">Carol</span>
+          <span class="date">01/01/2025 10:12</span>
+          <p>I love cats 🐱</p>
+        </li>
+        <li class="message-item">
+          <span class="pseudo">Dave</span>
+          <span class="date">01/01/2025 10:20</span>
+          <p>CSS Zen Garden is truly incredible.</p>
+        </li>
+        <li class="message-item">
+          <span class="pseudo">Eve</span>
+          <span class="date">01/01/2025 10:35</span>
+          <p>Can't wait to see what JavaScript will enable here!</p>
+        </li>
+      </ul>
+      <button id="btn-update">🔄 Refresh</button>
+    </section>
+
+    <!-- Post a message -->
+    <section aria-labelledby="poster-titre">
+      <h2 id="poster-titre">Post a Message</h2>
+      <div class="form-group">
+        <label for="input-pseudo">Your username</label>
+        <input type="text" id="input-pseudo" placeholder="e.g. Alice" maxlength="30" />
+      </div>
+      <div class="form-group">
+        <label for="input-message">Your message</label>
+        <textarea id="input-message" placeholder="Write your message here…" rows="4"></textarea>
+      </div>
+      <button id="btn-envoyer">✉️ Send</button>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Web Lab — HTML · CSS · JavaScript</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

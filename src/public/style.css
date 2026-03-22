@@ -1,0 +1,292 @@
+/* ============================================================
+   style.css — MessageBoard
+   Thème : éditorial / minimaliste avec accent pop
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500&display=swap');
+
+/* ── Variables de thème ────────────────────────────────────── */
+:root {
+  --bg:         #f5f3ee;
+  --bg-card:    #ffffff;
+  --bg-header:  #1a1a2e;
+  --text:        #1a1a1e;
+  --text-muted:  #7a7a8c;
+  --accent:      #e05c5c;
+  --accent-dark: #b83b3b;
+  --border:      #ddd9d0;
+  --shadow:      0 4px 24px rgba(0,0,0,0.08);
+  --radius:      12px;
+  --font-title:  'Playfair Display', Georgia, serif;
+  --font-body:   'DM Sans', sans-serif;
+  --transition:  0.25s ease;
+}
+
+body.theme-dark {
+  --bg:         #12121a;
+  --bg-card:    #1e1e2e;
+  --bg-header:  #0a0a14;
+  --text:        #e8e6f0;
+  --text-muted:  #8888aa;
+  --border:      #2e2e44;
+  --shadow:      0 4px 24px rgba(0,0,0,0.4);
+}
+
+/* ── Reset & base ──────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  transition: background-color var(--transition), color var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Header ────────────────────────────────────────────────── */
+header {
+  background-color: var(--bg-header);
+  color: #fff;
+  padding: 2rem 0;
+  text-align: center;
+  position: relative;
+}
+
+.header-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+header h1 {
+  font-family: var(--font-title);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-bottom: 0.4rem;
+}
+
+.tagline {
+  font-size: 0.95rem;
+  color: #aaa8cc;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1.4rem;
+}
+
+/* ── Bouton thème ──────────────────────────────────────────── */
+#btn-theme {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.5rem;
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+#btn-theme:hover { background: rgba(255,255,255,0.22); }
+
+/* ── Main layout ───────────────────────────────────────────── */
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 3rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* ── Sections ──────────────────────────────────────────────── */
+section {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.8rem 2rem;
+  box-shadow: var(--shadow);
+  transition: background var(--transition), border-color var(--transition);
+}
+
+section h2 {
+  font-family: var(--font-title);
+  font-size: 1.4rem;
+  margin-bottom: 1.2rem;
+  color: var(--text);
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.5rem;
+  display: inline-block;
+}
+
+/* ── Liste de messages ─────────────────────────────────────── */
+#liste-messages {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin-bottom: 1.4rem;
+}
+
+.message-item {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 8px;
+  padding: 0.9rem 1.1rem;
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.message-item .pseudo {
+  font-weight: 500;
+  color: var(--accent);
+  font-size: 0.9rem;
+  margin-right: 0.8rem;
+}
+
+.message-item .date {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.message-item p {
+  margin-top: 0.45rem;
+  line-height: 1.55;
+  font-size: 0.97rem;
+}
+
+/* ── Bouton mise à jour ────────────────────────────────────── */
+#btn-update {
+  background: transparent;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background var(--transition), color var(--transition);
+}
+#btn-update:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ── Formulaire ────────────────────────────────────────────── */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+input[type="text"],
+textarea {
+  font-family: var(--font-body);
+  font-size: 0.97rem;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  width: 100%;
+  transition: border-color var(--transition), background var(--transition);
+  outline: none;
+  resize: vertical;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(224, 92, 92, 0.15);
+}
+
+/* ── Bouton envoyer ────────────────────────────────────────── */
+#btn-envoyer {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.8rem;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--transition), transform 0.1s;
+  margin-top: 0.3rem;
+}
+#btn-envoyer:hover  { background: var(--accent-dark); }
+#btn-envoyer:active { transform: scale(0.97); }
+
+/* ── Footer ────────────────────────────────────────────────── */
+footer {
+  text-align: center;
+  padding: 1.2rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+  transition: border-color var(--transition);
+}
+
+/* ── Animation d'apparition des messages ──────────────────── */
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.message-item {
+  animation: fadeSlideIn 0.3s ease both;
+}
+
+/* ── Message meta row (pseudo + date + delete) ─────────────── */
+.message-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.message-meta .date { margin-left: auto; }
+
+/* ── Delete button ─────────────────────────────────────────── */
+.btn-del {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 0.7rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+  flex-shrink: 0;
+}
+.btn-del:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* ── Empty state ───────────────────────────────────────────── */
+.empty-state {
+  color: var(--text-muted);
+  font-style: italic;
+  border-left-color: var(--border) !important;
+  text-align: center;
+}
