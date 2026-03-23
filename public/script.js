@@ -1,15 +1,10 @@
-/* ============================================================
-   script.js — MessageBoard client
-   Connects to the Node.js micro-service via fetch / AJAX
-   ============================================================ */
-
-/* ── 3.1 : Basic JS exercises (console only) ────────────────── */
+/* ── 3.1 ────────────────── */
 
 function fact(n) {
   if (n <= 1) return 1;
   return n * fact(n - 1);
 }
-console.log("fact(6) =", fact(6)); // 720
+console.log("fact(6) =", fact(6));
 
 function applique(f, tab) {
   const result = [];
@@ -21,10 +16,6 @@ function applique(f, tab) {
 console.log("Factorials:", applique(fact, [1, 2, 3, 4, 5, 6]));
 console.log("n+1:", applique(function(n) { return n + 1; }, [1, 2, 3, 4, 5, 6]));
 
-
-/* ── Server URL (Section 3.4 — configurable) ────────────────── */
-
-// Default: same origin as the page (works when served by index.js)
 let SERVER_URL = window.location.origin;
 
 const serverInput = document.getElementById("input-server");
@@ -36,9 +27,6 @@ if (serverInput) {
   });
 }
 
-
-/* ── Helpers ────────────────────────────────────────────────── */
-
 function formatDate(isoString) {
   const date = new Date(isoString);
   return date.toLocaleString("en-GB", {
@@ -47,10 +35,6 @@ function formatDate(isoString) {
   });
 }
 
-/**
- * Rebuild the <ul> from an array of message objects.
- * Each object: { id, pseudo, msg, date }
- */
 function update(tableau) {
   const liste = document.getElementById("liste-messages");
   liste.innerHTML = "";
@@ -101,7 +85,7 @@ function update(tableau) {
 }
 
 
-/* ── Section 3.2 : Load all messages from the server ────────── */
+/* ── Section 3.2 ────────── */
 
 function loadMessages() {
   fetch(SERVER_URL + "/msg/getAll")
@@ -115,7 +99,7 @@ function loadMessages() {
 }
 
 
-/* ── Section 3.3 : Post a new message ───────────────────────── */
+/* ── Section 3.3 ───────────────────────── */
 
 document.getElementById("btn-envoyer").addEventListener("click", function() {
   const pseudoInput  = document.getElementById("input-pseudo");
@@ -190,7 +174,3 @@ btnTheme.addEventListener("click", function() {
     btnTheme.textContent = "☀️ Light mode";
   }
 });
-
-
-/* ── Init: load messages on page load ───────────────────────── */
-loadMessages();
